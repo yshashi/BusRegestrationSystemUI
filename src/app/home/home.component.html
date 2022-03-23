@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="card">
+
+        <div class="card-body">
+            <h4 class="card-title">Online Tickets Booking</h4>
+            <form [formGroup]="searchForm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-label">To From</label>
+                        <input formControlName="from" type="text" class="form-control">
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label"> From To</label>
+                        <input formControlName="to" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-label mt-1">Date of journey</label>
+                        <input formControlName="dateOfJourney" type="date" class="form-control">
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label mt-1">Date of return (Optional)</label>
+                        <input formControlName="dateOfreturn" type="date" class="form-control">
+                    </div>
+                </div>
+            </form>
+            <br>
+            <button (click)="searchBus()" class="btn btn-success d-block mx-auto">Search Bus</button>
+
+        </div>
+    </div>
+    <div class="card">
+
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+
+                        <th scope="col">Driver Name</th>
+                        <th scope="col">Depart</th>
+                        <th scope="col">Arrival</th>
+                        <th scope="col">Duration</th>
+                        <th scope="col">Seat</th>
+                        <th scope="col">Fair</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of searchedList">
+                        <td>{{row.driverName}}</td>
+                        <td>{{row.departureDate | date}}</td>
+                        <td>{{row.arrivalDate | date}}</td>
+                        <td>{{row.duration.value.hours}} hours</td>
+                        <td>{{row.availableSeats}} Seats</td>
+                        <td>{{row.fareAmount | currency:"INR"}}</td>
+                        <td><button class="btn btn-danger">Book</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+
+</div>
