@@ -1,6 +1,7 @@
 import { ScheduleService } from './../services/schedule.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   searchForm !: FormGroup;
   searchedList:any = []
-  constructor(private fb : FormBuilder, private schedule : ScheduleService) { }
+  constructor(private fb : FormBuilder, private schedule : ScheduleService, private router : Router) { }
 
   ngOnInit(): void {
     this.searchForm = this.fb.group({
@@ -27,5 +28,9 @@ export class HomeComponent implements OnInit {
       this.searchedList = res;
       this.searchForm.reset();
     })
+  }
+  gotoBooking(obj : any){
+    localStorage.clear();
+    this.router.navigate(['book',],{state:{data : obj}})
   }
 }

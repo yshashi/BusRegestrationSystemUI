@@ -7,11 +7,15 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import {HttpClientModule} from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
+import { CreateBookingComponent } from './create-booking/create-booking.component';
+import { ConfirmBookingComponent } from './confirm-booking/confirm-booking.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    CreateBookingComponent,
+    ConfirmBookingComponent
   ],
   imports: [
     BrowserModule,

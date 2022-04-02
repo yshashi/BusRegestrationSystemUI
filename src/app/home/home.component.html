@@ -56,7 +56,7 @@
                         <td>{{row.duration.value.hours}} hours</td>
                         <td>{{row.availableSeats}} Seats</td>
                         <td>{{row.fareAmount | currency:"INR"}}</td>
-                        <td><button class="btn btn-danger">Book</button></td>
+                        <td><button (click)="gotoBooking(row)" class="btn btn-danger">Book</button></td>
                     </tr>
                 </tbody>
             </table>

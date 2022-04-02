@@ -1,0 +1,53 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Book your Seat</h3>
+                <div class="row">
+                    <ng-container *ngFor="let row of busSeats">
+
+                        <div class="col-2">
+                            <button style="width: 160px; margin:20px; padding : 20px" (click)="selectSeat(row)" [ngClass]="{'btn-primary':row.isAvailable,'btn-danger':!row.isAvailable}" class="btn">{{row?.seatNumber}}</button>
+                        </div>
+
+                    </ng-container>
+                </div>
+                <div class="card-footer">
+                    <button (click)="BookSeat()" class="btn btn-success d-block mx-auto">BOOK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="showTable" class="container">
+    <div class="card">
+
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+
+                        <th scope="col">Driver Name</th>
+                        <th scope="col">Depart</th>
+                        <th scope="col">Arrival</th>
+                        <th scope="col">Seat</th>
+                        <th scope="col">Fair</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{bookingDetails?.driverName}}</td>
+                        <td>{{bookingDetails?.departureDate | date}}</td>
+                        <td>{{bookingDetails?.arrivalDate | date}}</td>
+                        <td>{{this.selectedSeat?.length}} Seats</td>
+                        <td>{{bookingDetails?.fareAmount | currency:"INR"}}</td>
+                        <td><button (click)="clickBook()" class="btn btn-danger">Book</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
